@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <!--for test second level cache-->
+    <!--必须要有name属性，不能为空 -->
+    <persistence-unit name="writeUnit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--厂商的特定属性 -->
+        <properties>
+            <property name="hibernate.connection.username" value="jetty"/>
+            <property name="hibernate.connection.password" value="jetty"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/hibernate5"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+            <property name="hibernate.javax.cache.provider" value="org.ehcache.jsr107.EhcacheCachingProvider"/>
+           <!-- <property name="hibernate.cache.use_query_cache" value="true"/> -->
+            <property name="hibernate.cache.provider_configuration_file_resource_path" value="classpath:ehcache.xml"/>
+        </properties>
+    </persistence-unit>
+</persistence>

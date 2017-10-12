@@ -2,6 +2,8 @@ package com.od.oh.model.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +21,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "old_driver")
 @SequenceGenerator(name = "seq_old_driver", sequenceName = "seq_old_driver")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class OldDriver {
 
     //private final Logger logger = LoggerFactory.getLogger(OldDriver.class);
@@ -70,6 +73,7 @@ public class OldDriver {
         this.age = age;
     }
 
+<<<<<<< HEAD
     public LocalDateTime getAdded_at() {
         return added_at;
     }
@@ -107,4 +111,10 @@ public class OldDriver {
     }
 
 
+=======
+    @Override
+    public String toString() {
+        return "OldDriver{" + "id=" + id + ", name='" + name + '\'' + ", age=" + age + '}';
+    }
+>>>>>>> 1166a7ea4c78c273d2821aca0bd07c51ed4cafb2
 }
